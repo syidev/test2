@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equations</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-3">Equations</h1>
+    <h3 class="text-center mt-3 text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></h3>
+    <h3 class="text-center mt-3" th:if="${equations.isEmpty()}">No data</h3>
+    <div class="row" th:if="${not equations.isEmpty()}">
+        <div class="col-6 mx-auto">
+            <table id="equations" class="table table-sm table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>Answer</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="e : ${equations}">
+                    <td th:text="${e.id}"></td>
+                    <td th:text="${e.name}"></td>
+                    <td th:text="${e.content}"></td>
+                    <td th:text="${e.answer}"></td>
+                    <td>
+                        <a th:href="@{/teacher/equation/delete/{id}(id=${e.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/teacher/equation/edit/{id}(id=${e.id})}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mx-auto text-center">
+            <a th:href="@{/teacher/equation/add}" class="btn btn-primary">Add equation</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

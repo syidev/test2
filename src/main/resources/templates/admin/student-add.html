@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <h1 class="text-center mt-3">Add student</h1>
+            <form th:action="@{add}" method="post" th:object="${student}">
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" id="name" th:field="*{name}">
+                    <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

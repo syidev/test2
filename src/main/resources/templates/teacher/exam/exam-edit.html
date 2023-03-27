@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit exam</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <h1 class="text-center mt-3">Edit exam</h1>
+            <form method="post" th:object="${exam}">
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}">
+                </div>
+                <h2>Edit equations</h2>
+                <table class="table table-sm table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Is included?</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="equation : ${equations}">
+                        <td th:text="${equation.id}"></td>
+                        <td th:text="${equation.name}"></td>
+                        <td th:text="${equation.content}"></td>
+                        <td th:text="${equation.answer}"></td>
+                        <td>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="equations"
+                                       th:value="${equation.id}" th:field="*{equations}">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

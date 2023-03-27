@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+  <h3 class="text-center mt-3" th:utext="'Name: ' + '<i>' + ${studentExam.student.name} + '</i>'"></h3>
+  <h3 class="text-center mt-3" th:utext="'Exam: ' + '<i>' + ${studentExam.exam.name}  + '</i>'"></h3>
+  <h3 class="text-center mt-3" th:utext="'Date: ' + '<i>' + ${#temporals.format(studentExam.dateTime, 'dd MMM yyyy H:mm')} + '</i>'"></h3>
+  <h2 class="text-center mt-3 mb-5" th:utext="'Grade: ' + '<i><b><ins>' + ${studentExam.grade} + '</ins></b></i>'"></h2>
+  <div class="row">
+      <div class="col-6 mx-auto text-center">
+          <a th:href="@{/student/check}" class="btn btn-primary">Return</a>
+      </div>
+  </div>
+</body>
+</html>

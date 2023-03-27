@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student exams</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-3">Student exams</h1>
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <form class="row mb-3 align-items-center" th:action="@{/teacher/student-exam/search}" method="get">
+                <div class="col-auto">
+                    <label class="form-label" for="name">Name</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="name" name="studentName" th:value="${query}">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+            <hr>
+        </div>
+    </div>
+    <h3 class="text-center mt-3" th:if="${students.isEmpty()}">No data</h3>
+    <div class="row" th:if="${not students.isEmpty()}">
+        <div class="col-6 mx-auto">
+            <table id="equation" class="table table-sm table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Student name</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${students}">
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.getName()}"></td>
+                    <th>
+                        <a class="btn btn-primary"
+                           th:href="@{/teacher/student-exam/{studentId}(studentId=${s.id})}">Exams</a>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

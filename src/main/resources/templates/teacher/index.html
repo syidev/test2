@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher index</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-3">Teacher index</h2>
+        <div class="d-grid gap-2 mt-3 col-6 mx-auto">
+            <a th:href="@{/teacher/equation/list}" class="btn btn-primary">Equations</a>
+            <a th:href="@{/teacher/exam/list}" class="btn btn-primary">Exams</a>
+            <hr>
+            <h4>Search</h4>
+            <a th:href="@{/teacher/student-exam/list}" class="btn btn-primary">Student exams</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student check</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <form method="post">
+                <h2 class="text-center mt-3 text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></h2>
+                <h1 class="text-center mt-3">Student check</h1>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Student name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" id="name" name="name">
+                    <div class="invalid-feedback d-block"
+                         th:if="${errorStudentMessage}" th:text="${errorStudentMessage}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

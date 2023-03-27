@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add equation</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <h1 class="text-center mt-3">Add equation</h1>
+            <form th:action="@{add}" method="post" th:object="${equation}">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" class="form-control" placeholder="Addition" id="name" th:field="*{name}">
+                    <div class="invalid-feedback d-block"
+                         th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="content">Content</label>
+                    <input type="text" class="form-control" placeholder="2+2" id="content" th:field="*{content}">
+                    <div class="invalid-feedback d-block"
+                         th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="answer">Answer</label>
+                    <input type="number" class="form-control" placeholder="4" id="answer" th:field="*{answer}">
+                    <div class="invalid-feedback d-block"
+                         th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

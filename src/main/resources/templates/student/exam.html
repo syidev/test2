@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-8 mx-auto">
+            <form method="post">
+                <h1 class="text-center mt-3" th:text="${student.name} + '`s ' + ${exam.name} + ' exam'"></h1>
+                <table id="equation" class="table table-sm table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Equation</th>
+                        <th>Answer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="e : ${exam.equations}">
+                        <td th:text="${e.id}"></td>
+                        <td th:text="${e.name}"></td>
+                        <td th:text="${e.content}"></td>
+                        <td>
+                            <input type="number" class="form-control" th:name="'equation_id_' + ${e.id}" >
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

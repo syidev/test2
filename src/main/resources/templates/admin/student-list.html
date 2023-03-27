@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-3">Students</h1>
+    <h3 class="text-center mt-3 text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></h3>
+    <h3 class="text-center mt-3" th:if="${students.isEmpty()}">No data</h3>
+    <div class="row" th:if="${not students.isEmpty()}">
+        <div class="col-6 mx-auto">
+            <table id="students" class="table table-sm table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${students}">
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.name}"></td>
+                    <td>
+                        <a th:href="@{/admin/student/delete/{id}(id=${s.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/admin/student/edit/{id}(id=${s.id})}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mx-auto text-center">
+            <a th:href="@{/admin/student/add}" class="btn btn-primary">Add student</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

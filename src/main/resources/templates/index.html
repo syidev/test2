@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center mt-3">Index</h2>
+        <div class="d-grid gap-2 mt-3 col-6 mx-auto">
+            <a th:href="@{/student/check}" class="btn btn-primary">I am a student</a>
+            <a th:href="@{/teacher}" class="btn btn-primary">I am a teacher</a>
+            <a th:href="@{/admin/student/list}" class="btn btn-danger">I am an admin</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

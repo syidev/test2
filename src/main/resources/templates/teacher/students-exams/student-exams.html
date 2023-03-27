@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student exam list</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-3">Student exam list</h1>
+    <h3 class="text-center mt-3" th:if="${studentExams.isEmpty()}">No data</h3>
+    <div class="row" th:if="${not studentExams.isEmpty()}">
+        <div class="col-6 mx-auto">
+            <table id="equation" class="table table-sm table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Exam name</th>
+                    <th>Grade</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="sE : ${studentExams}">
+                    <td th:text="${sE.id}"></td>
+                    <td th:text="${sE.exam.getName()}"></td>
+                    <td th:text="${sE.grade}"></td>
+                    <td th:text="${#temporals.format(sE.dateTime, 'dd MMM yyyy H:mm')}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
